@@ -57,6 +57,7 @@ button {
     font-size: 18px;
     transition: all .5s;
     border: 10px solid transparent;
+    cursor: pointer;
 }
 
 button:hover, .inputUser:hover {

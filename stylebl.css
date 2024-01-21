@@ -1,0 +1,86 @@
+@charset 'UTF-8';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    height: 100vh;
+    background: #79717A;
+}
+
+nav.menu-lateral {
+    width:80px;
+    height: 100%;
+    background-color:#0D0D0D;
+    padding: 40px 0 40px 1%;
+    border: #066204;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+    opacity: 0.8;
+}
+
+nav.menu-lateral.expandir{
+    width: 300px;
+}
+
+.btn-expandir{
+    width:100%;
+    padding-left: 10px;
+    background-color: #0D0D0D;
+}
+
+.btn-expandir > i{
+    color: #ffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+ul{
+    height: 100%;
+    list-style-type:none;
+}
+
+ul li.item-menu{  
+    transition: .2s;
+}
+
+ul li.ativo{
+    background-color: #3c743c;
+}
+
+
+ul li.item-menu:hover{  
+    background-color: #3c743c;
+}
+
+ul li.item-menu a {
+    color:#CBD9C1;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4px;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link{
+    margin-left: 70px;
+    transition: 1s;
+    opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link{
+    margin-left: 40px;
+    opacity: 1;
+}
+
+ul li.item-menu a .icon > i{
+    font-size: 30px;
+}

@@ -1,13 +1,13 @@
 @charset 'UTF-8';
 
 body{
+    height: 100vh;
     color: black;
     font-family: "Roboto", sans-serif;
-    background: #E5DED5;
 }
 
 div {
-    background-color: #FFF7ED;
+    background-color: #595959;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -20,7 +20,7 @@ h1,p {
 }
 
 table {
-    border: 1px solid #FFF7ED;
+    border: 1px solid #595959;
     border-spacing: 10px;
     border-collapse: collapse;
 }
@@ -46,7 +46,7 @@ td {
 tr:nth-child(even){
     border:none;
     text-align: center;
-    background-color: #99A697;
+    background-color: #A6A6A6;
 }
 
 a {

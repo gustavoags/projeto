@@ -18,12 +18,12 @@ nav.menu-lateral {
     background-color:#0D0D0D;
     padding: 40px 0 40px 1%;
     border: #066204;
+    box-shadow: 2px 0px 5px #066204;
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
     transition: .5s;
-    opacity: 0.8;
 }
 
 nav.menu-lateral.expandir{
@@ -53,6 +53,7 @@ ul li.item-menu{
 
 ul li.ativo{
     background-color: #3c743c;
+    border-radius: 5px 0px 0px 5px;
 }
 
 

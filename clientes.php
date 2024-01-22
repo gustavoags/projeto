@@ -44,19 +44,14 @@ $num_clientes = $query_clientes->num_rows;
                 // Editando o telefone para tipo (DDD) Telefone
                 $telefone = "Não informado";
                 if(!empty($cliente['telefone'])){
-                    $ddd = substr($cliente['telefone'], 0, 2);
-                    $parte_1 = substr($cliente['telefone'], 2, 5);
-                    $parte_2 = substr($cliente['telefone'], 6);
-                    $telefone ="($ddd) $parte_1-$parte_2";
+                    $telefone = formatar_telefone($cliente['telefone']);
                 }
                 $data_nascimento = "Não informada";
                 if(!empty($cliente['data_nascimento'])){
                     $data_nascimento =implode('/', array_reverse (explode('-', $cliente['data_nascimento'])));
                 }
-                
+                // Editando o tipo de Data
                 $data_cadastro = date("d/m/Y H:i", strtotime($cliente['data_cadastro']));
-                
-    
             ?>
             <tr>
                 <td><?php echo $cliente['id']; ?></td>
@@ -65,7 +60,7 @@ $num_clientes = $query_clientes->num_rows;
                 <td><?php echo $telefone; ?></td>
                 <td><?php echo $data_nascimento; ?></td>
                 <td><?php echo $data_cadastro; ?></td>
-                <td><a href="">Editar</a></td>
+                <td><a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a></td>
                 <td><a href="">Imprimir</a></td>
                 <td><a href="">Cancelar</a></td>
             </tr>

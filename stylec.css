@@ -4,6 +4,7 @@ body{
     height: 100vh;
     color: black;
     font-family: "Roboto", sans-serif;
+    background: black;
 }
 
 div {
@@ -20,23 +21,24 @@ h1,p {
 }
 
 table {
-    border: 1px solid #595959;
+    border: 1px solid #ffffff;
     border-spacing: 10px;
     border-collapse: collapse;
 }
 
 thead {
     border: 1px solid white;
+    background-color: #000000;
 }
 
 tbody{
-    border: 2px solid #E5DED5;
+    border: 2px solid white;
     border-radius: 5px;
     padding: 20px;
 }
 
 th {
-    border-top: 1px solid #CDD9C1;
+    border-top: 1px solid white;
 }
 
 td {

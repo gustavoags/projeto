@@ -9,7 +9,7 @@
 
 body{
     height: 100vh;
-    background: #79717A;
+    background: #000000;
 }
 
 nav.menu-lateral {
@@ -24,6 +24,7 @@ nav.menu-lateral {
     left: 0;
     overflow: hidden;
     transition: .5s;
+    opacity: 0.8;
 }
 
 nav.menu-lateral.expandir{

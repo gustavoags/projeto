@@ -11,15 +11,55 @@ $query_clientes = $mysqli->query($sql_clientes) or die($mysqli->error);
 $num_clientes = $query_clientes->num_rows;
 
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
-    <link rel="stylesheet" href="stylec.css">
+    <link rel="stylesheet" href="Estilos/stylec.css">
+    <link rel="stylesheet" href="Estilos/stylebl.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+     <!-- Barra de Navegação Lateral: ADM -->
+    <nav class="menu-lateral">
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+        </div>
+        
+        <ul>
+            <li class="item-menu ativo">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-house"></i></span>
+                    <span class="txt-link">Home</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-columns"></i></span>
+                    <span class="txt-link">Cadastar</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-gear-fill"></i></span>
+                    <span class="txt-link">Configurações</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="#">
+                    <span class="icon"><i class="bi bi-person"></i></span>
+                    <span class="txt-link">Conta</span>
+                </a>
+            </li>
+        </ul>
+        
+    </nav>
+    <!-- Animação da Barra Lateral -->
+    <script src="menu.js"></script>
+
     <div>
     <h1>Lista de Clientes</h1>
     <p>Clientes cadastrados na EASE TI</p>
@@ -51,7 +91,7 @@ $num_clientes = $query_clientes->num_rows;
                 }
                 $data_nascimento = "Não informada";
                 if(!empty($cliente['data_nascimento'])){
-                    $data_nascimento =implode('/', array_reverse (explode('-', $cliente['data_nascimento'])));
+                    $data_nascimento = formatar_data($cliente['data_nascimento']);
                 }
                 // Editando o tipo de Data
                 $data_cadastro = date("d/m/Y H:i", strtotime($cliente['data_cadastro']));
@@ -63,7 +103,9 @@ $num_clientes = $query_clientes->num_rows;
                 <td><?php echo $telefone; ?></td>
                 <td><?php echo $data_nascimento; ?></td>
                 <td><?php echo $data_cadastro; ?></td>
-                <td><a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a></td>
+                <td>
+                    <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a>
+                </td>
                 <td><a href="">Imprimir</a></td>
                 <td><a href="">Cancelar</a></td>
             </tr>
@@ -73,5 +115,7 @@ $num_clientes = $query_clientes->num_rows;
         </tbody>
     </table>
     </div>
+
+   
 </body>
 </html>

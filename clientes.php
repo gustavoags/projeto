@@ -1,15 +1,18 @@
 <?php
 include('conexao.php');
+
 //Consulta de todos do BD
 $sql_clientes = "SELECT * FROM clientes";
+
 //Consulta
 $query_clientes = $mysqli->query($sql_clientes) or die($mysqli->error);
+
 //Verificar quantos clientes existem
 $num_clientes = $query_clientes->num_rows;
 
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

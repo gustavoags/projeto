@@ -2,13 +2,13 @@
 
 body{
     height: 100vh;
-    color: black;
+    color: #ffffff;
     font-family: "Roboto", sans-serif;
-    background: black;
+    background: #79717A;
 }
 
 div {
-    background-color: #595959;
+    background-color: #000000;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -22,28 +22,30 @@ h1,p {
 
 table {
     border: 1px solid #ffffff;
+    border-radius: 10px;
     border-spacing: 10px;
     border-collapse: collapse;
 }
 
 thead {
-    border: 1px solid white;
+    border: 1px solid #ffffff;
     background-color: #000000;
 }
 
 tbody{
-    border: 2px solid white;
+    border: 2px solid #ffffff;
     border-radius: 5px;
     padding: 20px;
 }
 
 th {
-    border-top: 1px solid white;
+    border-top: 1px solid #ffffff;
 }
 
 td {
+    border: 1px solid #ffffff;
     padding-right: 50px;
-    padding-left: 30px;
+    padding-left: 20px;
 }
 tr:nth-child(even){
     border:none;

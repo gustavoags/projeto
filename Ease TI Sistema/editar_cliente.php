@@ -32,7 +32,6 @@ if(count($_POST) > 0) {
     }
 
     // VALIDANDO O NOME
-
     if(empty($nome)) {
         $erro = "Preencha o nome";
     }

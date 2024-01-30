@@ -17,11 +17,12 @@ if(count($_POST) > 0) {
     $senha = $_POST['senha'];
     $sql_code_extra = "";
 
+    $alterarSenha = false;
     if($alterarSenha){
         $sql_code_extra = "senha = '$senha_criptografada', ";
     }
     // Validando a troca de senha 
-    $alterarSenha = false;
+    
     if(!empty($senha)) {
         if(strlen($senha) < 6 && strlen($senha) > 16) {
             $erro ="A senha deve ter entre 6 e 16 caracteres.";

@@ -1,0 +1,64 @@
+@charset 'UTF-8';
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: #000000;
+}
+.tela-login {
+    background-color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 80px;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    color: white;
+    position: absolute;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus {
+    background: none;
+}
+
+.inputUser {
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #3B7032;
+    border-left: 1px solid black;
+    border-radius: 5px;
+    box-shadow:  2px 2px black;
+}
+
+button {
+    background-color: forestgreen;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    transition: all .5s;
+    border: 10px solid transparent;
+    cursor: pointer;
+}
+
+button:hover, .inputUser:hover {
+    -webkit-filter: drop-shadow(10px 5px 3px #3B7032);
+    filter: drop-shadow(10px 5px 3px #3B7032);
+}

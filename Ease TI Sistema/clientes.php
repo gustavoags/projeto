@@ -1,5 +1,5 @@
 <?php
-include('conexao.php');
+include('lib/conexao.php');
 
 //Consulta de todos do BD
 $sql_clientes = "SELECT * FROM clientes";
@@ -23,23 +23,28 @@ $num_clientes = $query_clientes->num_rows;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-     <!-- Barra de Navegação Lateral: ADM -->
     <nav class="menu-lateral">
         <div class="btn-expandir">
             <i class="bi bi-list" id="btn-exp"></i>
         </div>
         
         <ul>
-            <li class="item-menu ativo">
+            <li class="item-menu ">
                 <a href="#">
                     <span class="icon"><i class="bi bi-house"></i></span>
                     <span class="txt-link">Home</span>
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
+                <a href="cadastrar_cliente.php">
                     <span class="icon"><i class="bi bi-columns"></i></span>
                     <span class="txt-link">Cadastar</span>
+                </a>
+            </li>
+            <li class="item-menu ativo">
+                <a href="clientes.php">
+                    <span class="icon"><i class="bi bi-person-lines-fill"></i></span>
+                    <span class="txt-link">Clientes</span>
                 </a>
             </li>
             <li class="item-menu">
@@ -60,10 +65,10 @@ $num_clientes = $query_clientes->num_rows;
     <!-- Animação da Barra Lateral -->
     <script src="menu.js"></script>
 
-    <div>
+    <div class="tabela-clientes">
     <h1>Lista de Clientes</h1>
     <p>Clientes cadastrados na EASE TI</p>
-    <table cellpadding ="12px" >
+    <table cellpadding ="20px" >
         <thead>
             <th>ID</th>
             <th>Nome</th>
@@ -107,7 +112,9 @@ $num_clientes = $query_clientes->num_rows;
                     <a href="editar_cliente.php?id=<?php echo $cliente['id']; ?>">Editar</a>
                 </td>
                 <td><a href="">Imprimir</a></td>
-                <td><a href="">Cancelar</a></td>
+                <td>
+                    <a href="deletar_cliente.php?id=<?php echo $cliente['id']; ?>">Cancelar</a>
+                </td>
             </tr>
             <?php
             }

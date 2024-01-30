@@ -6,7 +6,10 @@ function limpar_texto($str){
 
 if(count($_POST) > 0) {
     //Conectando com o Banco de Dados
-    include('conexao.php');
+
+    include('lib/conexao.php');
+    include('lib/upload.php');
+    include('lib/mail.php');
 
     //Validações
     $erro = false;
@@ -43,14 +46,32 @@ if(count($_POST) > 0) {
         }
     }
 
+    // VALIDANDO A SENHA 
+    if(strlen($_POST['senha']) <= 6 && strlen($_POST['senha']) > 16){
+        $echo = "A senha deve ter enre 6 e 16 caracteres";
+    }
+
+    $senha_descriptografada = $_POST['senha'];
+    
+
     if($erro) {
         echo "<p><b>Erro: $erro </b></p>";
     } else {
-        $sql_code = "INSERT INTO clientes (nome, email, telefone, data_nascimento, data_cadastro)
-        VALUES ('$nome','$email','$telefone','$data_nascimento', NOW())";
+        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+        $sql_code = "INSERT INTO clientes (nome, email, telefone, senha, data_nascimento, data_cadastro)
+        VALUES ('$nome','$email','$telefone', '$senha','$data_nascimento', NOW())";
 
         $deu_certo = $mysqli->query($sql_code) or die($mysqli->error);
         if($deu_certo){
+            enviar_email($email, "Sua conta no site da EASE TI criada!", "<h1>Parabens!</h1>
+            <p>Obrigado por se cadastrar em nosso site</p>
+            <p>
+                <b>Login:</b>$email<br>
+                <b>Senha:</b>$senha_descriptografada
+            </p>
+            <p>Para fazer login acesse <a href=\"https://sitecadastroeaseti.com/login.php\">este link.<a/></p>
+        ");
             echo "<p><b>Cliente cadastrado com sucesso!</b></p>";
             unset($_POST);
         }
@@ -77,16 +98,22 @@ if(count($_POST) > 0) {
         </div>
         
         <ul>
-            <li class="item-menu ativo">
+            <li class="item-menu">
                 <a href="#">
                     <span class="icon"><i class="bi bi-house"></i></span>
                     <span class="txt-link">Home</span>
                 </a>
             </li>
-            <li class="item-menu">
+            <li class="item-menu ativo">
                 <a href="#">
                     <span class="icon"><i class="bi bi-columns"></i></span>
                     <span class="txt-link">Cadastar</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="clientes.php">
+                    <span class="icon"><i class="bi bi-person-lines-fill"></i></span>
+                    <span class="txt-link">Clientes</span>
                 </a>
             </li>
             <li class="item-menu">
@@ -106,7 +133,7 @@ if(count($_POST) > 0) {
 
     <script src="menu.js"></script>
 
-    <form method="POST" action="">
+    <form enctype="multipart/form-data" method="POST" action="">
         <div class="tela-login">
             <img src="imgs/logo-easeti-color-v1.png" alt=""><br><br>
             <h1>Cadastrar cliente</h1>
@@ -114,7 +141,8 @@ if(count($_POST) > 0) {
             <input value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" type="text" name="email" placeholder="E-mail" class="inputUser" ><br><br>
             <input value="<?php if(isset($_POST['telefone'])) echo $_POST['telefone']; ?>" type="text" name="telefone" placeholder="Telefone" class="inputUser" >
             <br><br>
-            <label for="data_nascimento">Data de Nascimento:</label>
+            <input value="<?php if(isset($_POST['senha'])) echo $_POST['senha']; ?>" type="password" name="senha" placeholder="Senha" class="inputUser" ><br><br>
+            <p>Data de Nascimento:</p>
             <br><br>
             <input value="<?php if(isset($_POST['data_nascimento'])) echo $_POST['data_nascimento']; ?>" type="text" name="data_nascimento" placeholder="Data de Nascimento" class="inputUser">
             <br><br>

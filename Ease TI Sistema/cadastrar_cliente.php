@@ -17,6 +17,7 @@ if(count($_POST) > 0) {
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
     $data_nascimento = $_POST['data_nascimento'];
+    $admin = $_POST['admin'];
 
     // VALIDANDO O NOME
 
@@ -59,8 +60,8 @@ if(count($_POST) > 0) {
     } else {
         $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-        $sql_code = "INSERT INTO clientes (nome, email, telefone, senha, data_nascimento, data_cadastro)
-        VALUES ('$nome','$email','$telefone', '$senha','$data_nascimento', NOW())";
+        $sql_code = "INSERT INTO clientes (nome, email, telefone, senha, data_nascimento, data_cadastro, admin)
+        VALUES ('$nome','$email','$telefone', '$senha','$data_nascimento', NOW(), '$admin')";
 
         $deu_certo = $mysqli->query($sql_code) or die($mysqli->error);
         if($deu_certo){
@@ -146,6 +147,8 @@ if(count($_POST) > 0) {
             <br><br>
             <input value="<?php if(isset($_POST['data_nascimento'])) echo $_POST['data_nascimento']; ?>" type="text" name="data_nascimento" placeholder="Data de Nascimento" class="inputUser">
             <br><br>
+            <input name="admin" value="1" type="radio"> Admin
+            <input name="admin" value="0" checked type="radio"> Cliente<br>
             <button type="submit">Realizar Cadastro</button><br><br>
             <a href="/clientes.php"><img src="imgs/icons8-voltar-64.png" alt=""></a>
         </div>

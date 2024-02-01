@@ -16,6 +16,7 @@ if(count($_POST) > 0) {
     $data_nascimento = $_POST['data_nascimento'];
     $senha = $_POST['senha'];
     $sql_code_extra = "";
+    $admin = $_POST['admin'];
 
     $alterarSenha = false;
     if($alterarSenha){
@@ -67,7 +68,8 @@ if(count($_POST) > 0) {
         email = '$email', 
         $sql_code_extra
         telefone = '$telefone',
-        data_nascimento = '$data_nascimento'
+        data_nascimento = '$data_nascimento',
+        admin = '$admin'
         WHERE id = '$id'";
         $deu_certo = $mysqli->query($sql_code) or die($mysqli->error);
         if($deu_certo) {
@@ -150,6 +152,8 @@ $cliente = $query_cliente->fetch_assoc();
             <br><br>
             <input value="<?php if(!empty($cliente['data_nascimento'])) echo formatar_data($cliente['data_nascimento']);?>" type="text" name="data_nascimento" placeholder="Data de Nascimento" class="inputUser">
             <br><br>
+            <input name="admin" value="1" type="radio"> Admin
+            <input name="admin" value="0" checked type="radio"> Cliente<br>
             <button type="submit">Finalizar</button><br><br>
             <a href="/clientes.php"><img src="imgs/icons8-voltar-64.png" alt=""></a>
         </div>

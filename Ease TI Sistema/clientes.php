@@ -71,6 +71,7 @@ $num_clientes = $query_clientes->num_rows;
     <table cellpadding ="20px" >
         <thead>
             <th>ID</th>
+            <th>É Admin?</th>
             <th>Nome</th>
             <th>E-mail</th>
             <th>Telefone</th>
@@ -83,7 +84,7 @@ $num_clientes = $query_clientes->num_rows;
         <tbody>
             <?php if($num_clientes == 0){ ?>
                 <tr>
-                    <td colspan="7">Nenhum cliente foi cadastrado</td>
+                    <td colspan="10">Nenhum cliente foi cadastrado</td>
                 </tr>
             <?php } else{ 
                 // Loop => Enquanto houver clientes no BD
@@ -103,6 +104,7 @@ $num_clientes = $query_clientes->num_rows;
             ?>
             <tr>
                 <td><?php echo $cliente['id']; ?></td>
+                <td><?php echo if($cliente['admin']) echo "SIM"; else echo "NÃO"; ?></td>
                 <td><?php echo $cliente['nome']; ?></td>
                 <td><?php echo $cliente['email']; ?></td>
                 <td><?php echo $telefone; ?></td>
